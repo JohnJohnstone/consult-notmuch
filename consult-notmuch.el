@@ -5,7 +5,7 @@
 ;; Keywords: mail
 ;; License: GPL-3.0-or-later
 ;; Version: 0.8.1
-;; Package-Requires: ((emacs "26.1") (consult "0.9") (notmuch "0.31"))
+;; Package-Requires: ((emacs "26.1") (consult "0.9") (notmuch "0.38.1"))
 ;; Homepage: https://codeberg.org/jao/consult-notmuch
 
 
@@ -259,7 +259,7 @@ If given, use INITIAL as the starting point of the query."
   (defun consult-notmuch-export (msgs)
     "Create a notmuch search buffer listing messages."
     (funcall consult-notmuch-export-function
-     (concat "(" (mapconcat #'consult-notmuch--candidate-id msgs " ") ")")))
+	     (concat "(" (mapconcat #'consult-notmuch--candidate-id msgs " ") ")")))
   (add-to-list 'embark-exporters-alist
                '(notmuch-result . consult-notmuch-export)))
 
@@ -326,13 +326,13 @@ is an empty input."
 ;;;###autoload
 (defvar consult-notmuch-buffer-source
   '(:name "Notmuch Buffer"
-    :narrow (?n . "Notmuch")
-    :hidden t
-    :category buffer
-    :face consult-buffer
-    :history buffer-name-history
-    :state consult--buffer-state
-    :items consult-notmuch--interesting-buffers)
+	  :narrow (?n . "Notmuch")
+	  :hidden t
+	  :category buffer
+	  :face consult-buffer
+	  :history buffer-name-history
+	  :state consult--buffer-state
+	  :items consult-notmuch--interesting-buffers)
   "Notmuch buffer candidate source for `consult-buffer'.")
 
 (provide 'consult-notmuch)
